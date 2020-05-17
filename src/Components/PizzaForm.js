@@ -23,10 +23,10 @@ const PizzaForm = () => {
     const [pizzaOrder, setPizzaOrder] = useState({
             name: '',
             size: '',
-            topping1: '',
-            topping2: '',
-            topping3: '',
-            topping4: '',
+            pepperoni: false,
+            extraCheese: false,
+            sausage: false,
+            basil: false,
             specialInstructions: ''
         });
 
@@ -45,17 +45,21 @@ const PizzaForm = () => {
      EVENT HANDLERS
      ***************/
     const handleChange = (event) => {
-        setPizzaOrder({...pizzaOrder, [event.target.name]: event.target.value});
+        setPizzaOrder({
+            ...pizzaOrder,
+            [event.target.name]:
+                event.target.type === "checkbox" ? event.target.checked : event.target.value
+        });
     }
 
     const handleSubmit = (event) => {
         setPizzaOrder({
             name: '',
             size: '',
-            topping1: '',
-            topping2: '',
-            topping3: '',
-            topping4: '',
+            pepperoni: '',
+            extraCheese: '',
+            sausage: '',
+            basil: '',
             specialInstructions: ''
         });
     }
@@ -64,16 +68,53 @@ const PizzaForm = () => {
      COMPONENT
      ***************/
     return (
-        <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={event => handleSubmit(event)}>
-            <label htmlFor="name" style={{display: 'flex', flexDirection: 'row'}}>
-                Name:
-                <input type="text" name="name" style={{marginLeft: "10px"}} value={pizzaOrder.name}
-                       onChange={event => handleChange(event)}/>
-            </label>
-            <button disabled={buttonDisabled} style={{margin: "10px", width: "250px"}}
-                    onClick={event => handleSubmit(event)}>Submit
-            </button>
-        </form>
+        <div>
+            <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={event => handleSubmit(event)}>
+                <label htmlFor="name" style={{display: 'flex', flexDirection: 'row'}}>
+                    Name:
+                    <input type="text" name="name" style={{marginLeft: "10px"}} value={pizzaOrder.name}
+                           onChange={event => handleChange(event)}/>
+                </label>
+                <label htmlFor="size" style={{display: 'flex', flexDirection: 'row'}}>
+                    Size:
+                    <select name="size" style={{marginLeft: "10px"}} value={pizzaOrder.size}
+                            onChange={event => handleChange(event)}>
+                        <option value="small">SMOL</option>
+                        <option value="medium">MEDIUM</option>
+                        <option value="large">LORGE</option>
+                        <option value="xLarge">EXTRA LORGE</option>
+                        <option value="xxLarge">MEGA GIGANTE</option>
+                    </select>
+                </label>
+                <div style={{display: 'flex', flexDirection: 'column'}}>
+                    Toppings (Pick Up To 4):
+                    <label htmlFor="pepperoni" style={{display: 'flex', flexDirection: 'row', marginLeft: "15px"}}>
+                        Pepperoni:
+                        <input type="checkbox" name={'pepperoni'} value={pizzaOrder.pepperoni}
+                               onChange={event => handleChange(event)}/>
+                    </label>
+                    <label htmlFor="extraCheese" style={{display: 'flex', flexDirection: 'row', marginLeft: "15px"}}>
+                        Extra Cheese:
+                        <input type="checkbox" name={'extraCheese'} value={pizzaOrder.extraCheese}
+                               onChange={event => handleChange(event)}/>
+                    </label>
+                    <label htmlFor="sausage" style={{display: 'flex', flexDirection: 'row', marginLeft: "15px"}}>
+                        Sausage:
+                        <input type="checkbox" name={'sausage'} value={pizzaOrder.sausage}
+                               onChange={event => handleChange(event)}/>
+                    </label>
+                    <label htmlFor="basil" style={{display: 'flex', flexDirection: 'row', marginLeft: "15px"}}>
+                        Basil:
+                        <input type="checkbox" name={'basil'} value={pizzaOrder.basil}
+                               onChange={event => handleChange(event)}/>
+                    </label>
+                </div>
+                <button disabled={buttonDisabled} style={{margin: "10px", width: "250px"}}
+                        onClick={event => handleSubmit(event)}>Submit
+                </button>
+            </form>
+            <pre>{JSON.stringify(pizzaOrder, null, 2)}</pre>
+        </div>
     )
 }
 
