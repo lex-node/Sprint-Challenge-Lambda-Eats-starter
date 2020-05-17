@@ -109,6 +109,12 @@ const PizzaForm = () => {
                                onChange={event => handleChange(event)}/>
                     </label>
                 </div>
+                <label htmlFor="specialInstructions" style={{display: 'flex', flexDirection: 'row'}}>
+                    Special instructions:
+                    <textarea name="specialInstructions" style={{marginLeft: "10px"}}
+                              value={pizzaOrder.specialInstructions}
+                              onChange={event => handleChange(event)}/>
+                </label>
                 <button disabled={buttonDisabled} style={{margin: "10px", width: "250px"}}
                         onClick={event => handleSubmit(event)}>Submit
                 </button>
