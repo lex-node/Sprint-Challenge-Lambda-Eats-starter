@@ -67,8 +67,12 @@ const PizzaForm = () => {
      COMPONENT
      ***************/
     return (
-        <div>
-            <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={event => handleSubmit(event)}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <h1>CREATE YOUR CUSTOM PIZZA</h1>
+            <iframe src="https://giphy.com/embed/9fuvOqZ8tbZOU" width="480" height="480" frameBorder="0"
+                    allowFullScreen></iframe>
+            <form style={{display: 'flex', flexDirection: 'column', margin: '20px'}}
+                  onSubmit={event => handleSubmit(event)}>
                 <label htmlFor="name" style={{display: 'flex', flexDirection: 'row'}}>
                     Name:
                     <input type="text" name="name" style={{marginLeft: "10px"}} value={pizzaOrder.name}
