@@ -18,11 +18,10 @@ const PizzaForm = () => {
     /***************
      HOOKS
      ***************/
-
         //sets contents of pizza order
     const [pizzaOrder, setPizzaOrder] = useState({
             name: '',
-            size: '',
+            size: 'small',
             pepperoni: false,
             extraCheese: false,
             sausage: false,
@@ -116,7 +115,8 @@ const PizzaForm = () => {
                               onChange={event => handleChange(event)}/>
                 </label>
                 <button disabled={buttonDisabled} style={{margin: "10px", width: "250px"}}
-                        onClick={event => handleSubmit(event)}>Submit
+                        onClick={event => handleSubmit(event)}>
+                    Add to Order
                 </button>
             </form>
             <pre>{JSON.stringify(pizzaOrder, null, 2)}</pre>
