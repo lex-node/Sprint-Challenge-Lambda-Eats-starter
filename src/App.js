@@ -8,6 +8,7 @@ import PizzaForm from "./Components/PizzaForm";
 
 const App = () => {
     return (
+        //sets up routes
         <Router>
             <nav style={{display: "flex", margin: "10px"}}>
                 <Link to={'/'}>
